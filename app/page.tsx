@@ -1,103 +1,217 @@
-import Image from "next/image";
+import { ArrowRight, Github, Linkedin, Mail, Twitter } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
+
+import { Button } from "@/components/ui/button"
+import { ProjectCard } from "@/components/project-card"
+import { SkillBadge } from "@/components/skill-badge"
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-gradient-to-b from-background to-muted">
+      <header className="container mx-auto py-6 px-4 flex justify-between items-center">
+        <Link href="/" className="text-xl font-bold">
+          Portfolio
+        </Link>
+        <nav className="hidden md:flex space-x-6">
+          <Link href="#about" className="hover:text-primary transition-colors">
+            About
+          </Link>
+          <Link href="#projects" className="hover:text-primary transition-colors">
+            Projects
+          </Link>
+          <Link href="#skills" className="hover:text-primary transition-colors">
+            Skills
+          </Link>
+          <Link href="#contact" className="hover:text-primary transition-colors">
+            Contact
+          </Link>
+        </nav>
+        <Button variant="outline" size="sm" className="md:hidden">
+          Menu
+        </Button>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+      <main>
+        {/* Hero Section */}
+        <section className="container mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2 space-y-6">
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+              Hi, I'm <span className="text-primary">Alex</span>
+              <br />
+              Creative Developer
+            </h1>
+            <p className="text-muted-foreground text-lg md:text-xl max-w-md">
+              I build exceptional digital experiences that are fast, accessible, and visually appealing.
+            </p>
+            <div className="flex space-x-4">
+              <Button>
+                View Projects
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline">Contact Me</Button>
+            </div>
+            <div className="flex space-x-4 pt-4">
+              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Github className="h-6 w-6" />
+                <span className="sr-only">GitHub</span>
+              </Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Twitter className="h-6 w-6" />
+                <span className="sr-only">Twitter</span>
+              </Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Linkedin className="h-6 w-6" />
+                <span className="sr-only">LinkedIn</span>
+              </Link>
+            </div>
+          </div>
+          <div className="md:w-1/2 mt-12 md:mt-0 flex justify-center">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20">
+              <Image src="/placeholder.svg?height=320&width=320" alt="Profile" fill className="object-cover" priority />
+            </div>
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="bg-muted/50 py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">About Me</h2>
+            <div className="flex flex-col md:flex-row gap-12 items-center">
+              <div className="md:w-1/2">
+                <Image
+                  src="/placeholder.svg?height=400&width=600"
+                  alt="About me"
+                  width={600}
+                  height={400}
+                  className="rounded-lg shadow-lg"
+                />
+              </div>
+              <div className="md:w-1/2 space-y-4">
+                <p className="text-lg">
+                  I'm a passionate web developer with over 5 years of experience creating modern, responsive websites
+                  and applications. I specialize in front-end development with React and Next.js, but I'm also
+                  comfortable working with back-end technologies.
+                </p>
+                <p className="text-lg">
+                  My approach to design focuses on creating intuitive user experiences that are both functional and
+                  visually appealing. I believe in clean code, accessibility, and performance optimization.
+                </p>
+                <p className="text-lg">
+                  When I'm not coding, you can find me hiking, reading science fiction, or experimenting with new
+                  technologies.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects" className="py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">My Projects</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <ProjectCard
+                title="E-commerce Platform"
+                description="A full-featured online store built with Next.js and Stripe integration."
+                image="/placeholder.svg?height=300&width=500"
+                tags={["Next.js", "Stripe", "Tailwind CSS"]}
+                link="#"
+              />
+              <ProjectCard
+                title="Portfolio Website"
+                description="A responsive portfolio website showcasing creative work and projects."
+                image="/placeholder.svg?height=300&width=500"
+                tags={["React", "Framer Motion", "GSAP"]}
+                link="#"
+              />
+              <ProjectCard
+                title="Task Management App"
+                description="A productivity application with drag-and-drop interface and real-time updates."
+                image="/placeholder.svg?height=300&width=500"
+                tags={["TypeScript", "Firebase", "React DnD"]}
+                link="#"
+              />
+            </div>
+            <div className="mt-12 text-center">
+              <Button variant="outline">
+                View All Projects
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Skills Section */}
+        <section id="skills" className="bg-muted/50 py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Skills & Expertise</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <SkillBadge name="React" level={90} />
+              <SkillBadge name="Next.js" level={85} />
+              <SkillBadge name="TypeScript" level={80} />
+              <SkillBadge name="Tailwind CSS" level={95} />
+              <SkillBadge name="Node.js" level={75} />
+              <SkillBadge name="GraphQL" level={70} />
+              <SkillBadge name="UI/UX Design" level={85} />
+              <SkillBadge name="Responsive Design" level={90} />
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="py-20">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Get In Touch</h2>
+            <div className="flex flex-col md:flex-row gap-12">
+              <div className="md:w-1/2 space-y-6">
+                <h3 className="text-2xl font-semibold">Contact Information</h3>
+                <p className="text-lg">
+                  I'm currently available for freelance work and exciting opportunities. Feel free to reach out if you
+                  have a project in mind or just want to connect!
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <Mail className="h-5 w-5 text-primary" />
+                    <span>hello@example.com</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Twitter className="h-5 w-5 text-primary" />
+                    <span>@username</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Linkedin className="h-5 w-5 text-primary" />
+                    <span>linkedin.com/in/username</span>
+                  </div>
+                </div>
+              </div>
+              {/* <div className="md:w-1/2">
+                <ContactForm />
+              </div> */}
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      <footer className="bg-background border-t py-12">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-muted-foreground">© {new Date().getFullYear()} Portfolio. All rights reserved.</p>
+          <div className="flex justify-center space-x-6 mt-4">
+            <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Github className="h-5 w-5" />
+              <span className="sr-only">GitHub</span>
+            </Link>
+            <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Twitter className="h-5 w-5" />
+              <span className="sr-only">Twitter</span>
+            </Link>
+            <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Linkedin className="h-5 w-5" />
+              <span className="sr-only">LinkedIn</span>
+            </Link>
+          </div>
+        </div>
       </footer>
     </div>
-  );
+  )
 }
